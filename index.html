@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жаным, мерекеңмен!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff0f6 0%, #ffdde1 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 50px 30px;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.25);
+            max-width: 450px;
+            margin: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            animation: fadeIn 2s ease-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        .heart-icon {
+            font-size: 65px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        h1 {
+            color: #d53f8c;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-family: 'Georgia', serif;
+        }
+
+        .main-text {
+            color: #4a5568;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .highlight {
+            color: #d53f8c;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(45deg, #ff4d94, #ff85ad);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(255, 77, 148, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 77, 148, 0.5);
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.25); }
+            70% { transform: scale(1); }
+        }
+
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart-icon">💖</div>
+        <h1>Жаным...</h1>
+        
+        <p class="main-text">
+            Сені келе жатқан <span class="highlight">8 наурыз</span> мерекеңмен құттықтаймын! 🌸 <br><br>
+            Сен — менің әлемімді нұрландыратын ең жарық жұлдызысың. Көктемнің осы бір сұлу күнінде саған тек бақыт пен күлкі тілеймін. <br><br>
+            <span class="highlight">Жаным</span>, қасымда болғаның үшін рахмет!
+        </p>
+        
+        <p style="color: #718096; font-size: 0.9em; margin-bottom: 20px;">
+            Сен үшін ерекше бір жоспарым бар еді... 👇
+        </p>
+        
+        <a href="https://wa.me/87082461074?text=Жаным,%20мен%20келісемін!%20Кездескенше%20❤️" class="btn">Шақыруды қабылдау ✨</a>
+    </div>
+
+    <script>
+        function createParticle() {
+            const particle = document.createElement('div');
+            const icons = ['❤️', '🌸', '🌹', '💖', '✨'];
+            particle.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '-30px';
+            particle.style.fontSize = Math.random() * 20 + 15 + 'px';
+            particle.style.opacity = Math.random() * 0.6 + 0.4;
+            
+            document.body.appendChild(particle);
+
+            const duration = Math.random() * 4 + 4;
+            particle.animate([
+                { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
+                { transform: `translateY(110vh) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+            ], {
+                duration: duration * 1000,
+                easing: 'linear'
+            });
+
+            setTimeout(() => { particle.remove(); }, duration * 1000);
+        }
+
+        setInterval(createParticle, 400);
+    </script>
+</body>
+</html>
